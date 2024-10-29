@@ -2,6 +2,8 @@
 import Github from "@/shared/components/Icons/Github.astro"
 import Linkedin from "@/shared/components/Icons/Linkedin.astro"
 import Layout from "@/shared/components/layout/Layout.astro"
+import CvImage from "@/shared/images/sebastian-thumbnail.jpeg"
+import Image from "astro/components/Image.astro"
 import NavigationItem from "./NavigationItem.astro"
 ---
 
@@ -15,11 +17,21 @@ import NavigationItem from "./NavigationItem.astro"
 		class="mx-auto flex min-h-screen max-w-screen-xl flex-col gap-10 px-3 pt-12 font-sans lg:flex-row lg:pt-28"
 	>
 		<header class="flex flex-1 flex-col gap-10 lg:gap-20">
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-8">
 				<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					<a href="/">Sebastian Buitrago</a>
 				</h1>
-				<h2 class="text-2xl tracking-tight">Senior Frontend Developer</h2>
+				<div class="flex items-center gap-5">
+					<Image
+						src={CvImage}
+						alt="Sebastian Buitrago"
+						width={200}
+						height={200}
+						class={"rounded-full w-20 h-20 object-cover opacity-80"}
+						loading={"lazy"}
+					/>
+					<h2 class="text-balance text-2xl tracking-tight">Senior Frontend Developer</h2>
+				</div>
 				<p class="text-balance text-neutral-secondary">
 					I'm a Senior Frontend Developer with a passion for building user-friendly and accessible
 					websites. I'm excited to bring my expertise to the table and Lorem ipsum dolor sit amet
@@ -40,12 +52,15 @@ import NavigationItem from "./NavigationItem.astro"
 				<ul class="flex gap-4 pl-2">
 					<li>
 						<a href="" class="group">
-							<Github class="transitions-colors group-hover:text-accent" size="sm" />
+							<Github class="transitions-colors group-hover:text-primary" color="accent" />
 						</a>
 					</li>
 					<li>
 						<a href="" class="group">
-							<Linkedin class="transition-colors duration-500 group-hover:text-accent" size="sm" />
+							<Linkedin
+								class="transition-colors duration-500 group-hover:text-primary"
+								color="accent"
+							/>
 						</a>
 					</li>
 				</ul>
