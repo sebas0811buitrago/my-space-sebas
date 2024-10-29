@@ -1,0 +1,90 @@
+---
+import Github from "@/shared/components/Icons/Github.astro"
+import Linkedin from "@/shared/components/Icons/Linkedin.astro"
+import Layout from "@/shared/components/layout/Layout.astro"
+import NavigationItem from "./NavigationItem.astro"
+---
+
+<Layout title="Sebastian Buitrago" id="root">
+	<div
+		id="cv-background"
+		class="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
+	>
+	</div>
+	<div
+		class="mx-auto flex min-h-screen max-w-screen-xl flex-col gap-10 px-3 pt-12 font-sans lg:flex-row lg:pt-28"
+	>
+		<header class="flex flex-1 flex-col gap-10 lg:gap-20">
+			<div class="flex flex-col gap-4">
+				<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+					<a href="/">Sebastian Buitrago</a>
+				</h1>
+				<h2 class="text-2xl tracking-tight">Senior Frontend Developer</h2>
+				<p class="text-balance text-neutral-secondary">
+					I'm a Senior Frontend Developer with a passion for building user-friendly and accessible
+					websites. I'm excited to bring my expertise to the table and Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Exercitationem magni a voluptas, consequatur ullam nisi
+					earum perferendis fugit in debitis labore ea fugiat illo vero inventore quam iure esse
+					blanditiis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, quibusdam!
+				</p>
+			</div>
+			<nav>
+				<ul class="flex flex-col gap-4">
+					<li><NavigationItem href={"/#about"} isHomeLink> ABOUT</NavigationItem></li>
+					<li><NavigationItem href={"/#experience"}> EXPERIENCE</NavigationItem></li>
+					<li><NavigationItem href={"/#education"}> EDUCATION</NavigationItem></li>
+				</ul>
+			</nav>
+
+			<nav>
+				<ul class="flex gap-4 pl-2">
+					<li>
+						<a href="" class="group">
+							<Github class="transitions-colors group-hover:text-accent" size="sm" />
+						</a>
+					</li>
+					<li>
+						<a href="" class="group">
+							<Linkedin class="transition-colors duration-500 group-hover:text-accent" size="sm" />
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main class="flex-1">
+			<p class="text-neutral-secondary">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quod inventore ex harum
+				tenetur similique ab temporibus ratione commodi facilis tempore eius eveniet provident,
+				ullam, veritatis minus recusandae. Quibusdam, corporis? Minus corporis sequi possimus,
+				ducimus debitis neque laboriosam maiores facilis repudiandae natus culpa eaque accusantium
+				labore! Eligendi eius nesciunt cum? Lorem ipsum dolor sit amet, consectetur adipisicing
+				elit. Nulla at rerum esse molestiae praesentium suscipit voluptates, corrupti aut adipisci
+				impedit nemo temporibus eveniet ea odit, repellat ullam assumenda, cum reiciendis. Lorem
+				ipsum, dolor sit amet consectetur adipisicing elit.<strong class="text-accent/80">
+					Et dignissimos</strong
+				> dolore quibusdam numquam sunt ullam nostrum enim illum maxime voluptatibus mollitia, error
+				rem sequi tenetur laudantium, nesciunt corporis est debitis!
+			</p>
+
+			<p class="mt-10 text-neutral-secondary">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quod inventore ex harum
+				tenetur similique ab temporibus ratione commodi facilis tempore eius eveniet provident,
+				ullam, veritatis minus recusandae. Quibusdam, corporis? Minus corporis sequi possimus,
+				ducimus debitis neque laboriosam maiores facilis repudiandae natus culpa eaque accusantium
+				labore! Eligendi eius nesciunt cum? Lorem ipsum dolor sit amet, consectetur adipisicing
+				elit. Nulla at rerum esse molestiae praes<strong class="text-accent/80">
+					Et dignissimos</strong
+				>
+			</p>
+		</main>
+	</div>
+</Layout>
+
+<script>
+	const root = document.getElementById("root")!
+	const cvBackground = document.getElementById("cv-background")!
+	root.addEventListener("mousemove", (event) => {
+		const { clientX: x, clientY: y } = event
+		cvBackground.style.background = `radial-gradient(400px at ${x}px ${y}px, hsla(39, 66%, 70%, 0.08), transparent 80%)`
+	})
+</script>

@@ -2,52 +2,14 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-  }
-
-  [data-theme="dark"] {
-  }
-
-  .article p {
-    @apply mb-6;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-neutral-primary;
-  }
-
-  .article h1,
-  .article h2,
-  .article h3,
-  .article h4,
-  .article h5,
-  .article h6 {
-    @apply mb-8 font-bold;
-  }
-
-  .article img {
-    @apply h-80 w-full self-center rounded-2xl object-cover;
-  }
-}
-/* 
-@media (prefers-color-scheme: dark) {
 	:root {
-		--background-color: 0 0% 11%;
-		--primary: 145 44% 60%;
-		--light-primary: 145 81% 30%;
-		--dark-primary: 145 18% 70%;
-		--accent: 145 48% 70%;
+		--background: 0 0% 5%;
+		--background-secondary: 0 0% 8%;
+		--primary: 24 100% 70%;
+		--accent: 39 66% 70%;
 		--neutral-primary: 0 0% 80%;
-		--neutral-secondary: 0 0% 70%;
-		--foreground-color: 0 0% 100%;
+		--neutral-secondary: 0 0% 55%;
 	}
-} */
-
-body {
-  color: hsl(var(--neutral-secondary));
 }
+
+/* have into account prefer reduced motion */

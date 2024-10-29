@@ -1,0 +1,27 @@
+---
+import "@/shared/styles/global.css"
+import type { HTMLAttributes } from "astro/types"
+
+type Props = {
+	title: string
+} & HTMLAttributes<"html">
+
+const { title } = Astro.props
+
+const { class: className, ...props } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class={className} {...props}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<slot name="head" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-background text-neutral-primary"> <slot /> </body>
+</html>
