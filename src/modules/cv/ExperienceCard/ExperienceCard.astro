@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content"
+import Chip from "./Chip.astro"
+
+type Props = CollectionEntry<"experience">["data"]
+
+const {
+	title,
+	company: { name: companyName, url: companyUrl },
+	startDate,
+	endDate,
+	technologies,
+} = Astro.props
+---
+
+<article>
+	<header>
+		<h2 class="text-lg font-light">{title}</h2>
+
+		<h3>
+			<a href={companyUrl} class="text-neutral-secondary hover:text-accent" target="_blank"
+				>{companyName}</a
+			>
+		</h3>
+	</header>
+
+	<section class="flex flex-col gap-4"></section>
+
+	<div class="flex flex-wrap gap-4">
+		{technologies.map((technology) => <Chip>{technology}</Chip>)}
+	</div>
+</article>

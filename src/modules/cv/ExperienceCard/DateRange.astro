@@ -1,0 +1,23 @@
+---
+
+---
+
+<time datetime={startDate.toISOString()}>
+	{
+		startDate.toLocaleDateString("es-CO", {
+			year: "numeric",
+		})
+	}
+</time>
+-
+{
+	endDate === "present" ? (
+		"present"
+	) : (
+		<time datetime={endDate.toISOString()}>
+			{endDate.toLocaleDateString("es-CO", {
+				year: "numeric",
+			})}
+		</time>
+	)
+}
