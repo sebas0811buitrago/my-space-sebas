@@ -1,23 +1,32 @@
 ---
+import capitalize from "@/shared/utils/capitalize"
 
+type Props = {
+	startDate: Date
+	endDate: Date | "present"
+}
+
+const { startDate, endDate } = Astro.props
 ---
 
-<time datetime={startDate.toISOString()}>
-	{
-		startDate.toLocaleDateString("es-CO", {
-			year: "numeric",
-		})
-	}
-</time>
--
-{
-	endDate === "present" ? (
-		"present"
-	) : (
-		<time datetime={endDate.toISOString()}>
-			{endDate.toLocaleDateString("es-CO", {
+<div class="rounded-full bg-accent/5 px-3 py-1 text-xs text-accent">
+	<time datetime={startDate.toISOString()}>
+		{
+			startDate.toLocaleDateString("es-CO", {
 				year: "numeric",
-			})}
-		</time>
-	)
-}
+			})
+		}
+	</time>
+	-
+	{
+		endDate === "present" ? (
+			capitalize(endDate)
+		) : (
+			<time datetime={endDate.toISOString()}>
+				{endDate.toLocaleDateString("es-CO", {
+					year: "numeric",
+				})}
+			</time>
+		)
+	}
+</div>

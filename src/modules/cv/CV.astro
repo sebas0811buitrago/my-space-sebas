@@ -12,7 +12,7 @@ import NavigationItem from "./NavigationItem.astro"
 const experienceContent = await getCollection("experience")
 ---
 
-<Layout title="Sebastian Buitrago" id="root">
+<Layout title="Sebastian Buitrago" id="root" class="scroll-smooth">
 	<div
 		id="cv-background"
 		class="pointer-events-none fixed inset-0 z-30 h-full transition duration-300"
@@ -60,14 +60,17 @@ const experienceContent = await getCollection("experience")
 				<nav>
 					<ul class="my-auto flex justify-center gap-4 pl-2 lg:justify-start">
 						<li>
-							<a href="/" class="group" aria-label="Github Link">
-								<Github class="transitions-colors group-hover:text-primary" color="accent" />
+							<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
+								<Github
+									class="transitions-colors back text-accent group-hover:text-primary"
+									color="accent"
+								/>
 							</a>
 						</li>
 						<li>
-							<a href="/" class="group" aria-label="Linkedin Link">
+							<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
 								<Linkedin
-									class="transition-colors duration-500 group-hover:text-primary"
+									class="text-accent transition-colors duration-500 group-hover:text-primary"
 									color="accent"
 								/>
 							</a>
@@ -75,7 +78,7 @@ const experienceContent = await getCollection("experience")
 					</ul>
 				</nav>
 			</header>
-			<main class="flex flex-col gap-10 lg:flex-1 lg:py-24">
+			<main class="flex flex-col gap-10 lg:flex-1 lg:py-24" id="about">
 				<!-- <CardsWrapper title="About Me"> -->
 				<p class="text-neutral-secondary">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quod inventore ex harum
@@ -92,7 +95,7 @@ const experienceContent = await getCollection("experience")
 				</p>
 				<!-- </CardsWrapper> -->
 
-				<CardsWrapper title="Experience" class="mt-7">
+				<CardsWrapper title="Experience" class="mt-7" id="experience">
 					{
 						experienceContent.map(async ({ data: experience, render }) => {
 							const { Content } = await render()
@@ -107,7 +110,7 @@ const experienceContent = await getCollection("experience")
 					}
 				</CardsWrapper>
 
-				<CardsWrapper title="Education" class="mt-7">
+				<CardsWrapper title="Education" class="mt-7" id="education">
 					{
 						experienceContent.map(async ({ data: experience, render }) => {
 							const { Content } = await render()

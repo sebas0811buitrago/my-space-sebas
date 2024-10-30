@@ -33,14 +33,15 @@ const { class: className, id, isHomeLink, ...props } = Astro.props
 				link.getAttribute("href") === currentPath ||
 				(Boolean(isHomeLink) && currentPath === "/")
 			) {
-				console.log("hola", currentPath, link.getAttribute("href"))
 				link.classList.add("text-primary")
 				link.classList.add("font-bold")
+				link.querySelector("hr")?.classList.remove("w-6")
 				link.querySelector("hr")?.classList.add("w-14")
 			} else {
 				link.classList.remove("text-primary")
 				link.classList.remove("font-bold")
 				link.querySelector("hr")?.classList.remove("w-14")
+				link.querySelector("hr")?.classList.add("w-6")
 			}
 		})
 	}

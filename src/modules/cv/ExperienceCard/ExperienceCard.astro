@@ -2,6 +2,7 @@
 import OpenLink from "@/shared/components/Icons/OpenLink.astro"
 import type { CollectionEntry } from "astro:content"
 import Chip from "./Chip.astro"
+import DateRange from "./DateRange.astro"
 
 type Props = CollectionEntry<"experience">["data"]
 
@@ -16,7 +17,10 @@ const {
 
 <article class="flex flex-col gap-5">
 	<header>
-		<h2 class="text-lg font-light">{title}</h2>
+		<div class="flex justify-between">
+			<h2 class="text-lg font-light">{title}</h2>
+			<DateRange startDate={startDate} endDate={endDate} />
+		</div>
 
 		<h3>
 			<a
