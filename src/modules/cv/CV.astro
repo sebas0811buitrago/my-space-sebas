@@ -6,6 +6,7 @@ import CvImage from "@/shared/images/sebastian-thumbnail.jpeg"
 import Image from "astro/components/Image.astro"
 import { getCollection } from "astro:content"
 import ExperienceCard from "./ExperienceCard"
+import CardsWrapper from "./ExperienceCard/CardsWrapper.astro"
 import NavigationItem from "./NavigationItem.astro"
 
 const experienceContent = await getCollection("experience")
@@ -75,6 +76,7 @@ const experienceContent = await getCollection("experience")
 				</nav>
 			</header>
 			<main class="flex flex-col gap-10 lg:flex-1 lg:py-24">
+				<!-- <CardsWrapper title="About Me"> -->
 				<p class="text-neutral-secondary">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quod inventore ex harum
 					tenetur similique ab temporibus ratione commodi facilis tempore eius eveniet provident,
@@ -88,8 +90,9 @@ const experienceContent = await getCollection("experience")
 					> dolore quibusdam numquam sunt ullam nostrum enim illum maxime voluptatibus mollitia, error
 					rem sequi tenetur laudantium, nesciunt corporis est debitis!
 				</p>
+				<!-- </CardsWrapper> -->
 
-				<ul class="flex flex-col gap-10">
+				<CardsWrapper title="Experience" class="mt-7">
 					{
 						experienceContent.map(async ({ data: experience, render }) => {
 							const { Content } = await render()
@@ -102,7 +105,22 @@ const experienceContent = await getCollection("experience")
 							)
 						})
 					}
-				</ul>
+				</CardsWrapper>
+
+				<CardsWrapper title="Education" class="mt-7">
+					{
+						experienceContent.map(async ({ data: experience, render }) => {
+							const { Content } = await render()
+							return (
+								<li>
+									<ExperienceCard {...experience}>
+										<Content />
+									</ExperienceCard>
+								</li>
+							)
+						})
+					}
+				</CardsWrapper>
 			</main>
 		</div>
 	</div>

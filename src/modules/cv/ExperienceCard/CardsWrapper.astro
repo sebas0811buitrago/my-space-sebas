@@ -1,0 +1,24 @@
+---
+import { cn } from "@/shared/utils/cn"
+import type { HTMLAttributes } from "astro/types"
+
+type Props = {
+	title?: string
+} & HTMLAttributes<"ul">
+
+const { title, class: className, ...props } = Astro.props
+---
+
+<ul
+	class={cn("relative flex flex-col gap-10 rounded-lg bg-background-secondary p-6", className)}
+	{...props}
+>
+	{
+		Boolean(title) && (
+			<h2 class="absolute left-0 top-0 -translate-y-full px-3 py-1 text-sm text-neutral-secondary">
+				{title}
+			</h2>
+		)
+	}
+	<slot />
+</ul>

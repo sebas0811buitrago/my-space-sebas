@@ -1,4 +1,5 @@
 ---
+import OpenLink from "@/shared/components/Icons/OpenLink.astro"
 import type { CollectionEntry } from "astro:content"
 import Chip from "./Chip.astro"
 
@@ -18,15 +19,19 @@ const {
 		<h2 class="text-lg font-light">{title}</h2>
 
 		<h3>
-			<a href={companyUrl} class="text-neutral-secondary hover:text-accent" target="_blank"
-				>{companyName}</a
+			<a
+				href={companyUrl}
+				class="group flex items-center gap-2 text-neutral-secondary hover:text-accent"
+				target="_blank"
+				>{companyName}
+
+				<OpenLink color="neutral-secondary" class="group-hover:text-accent" size="xs" /></a
 			>
 		</h3>
 	</header>
 
 	<section
-		id="experience-description"
-		class="flex list-decimal flex-col gap-4 text-sm text-neutral-secondary"
+		class="experience-description flex list-decimal flex-col gap-4 text-sm text-neutral-secondary"
 	>
 		<slot />
 	</section>
@@ -36,29 +41,13 @@ const {
 	</div>
 </article>
 
-<h1>hola</h1>
-
 <style>
-	h1 {
-		color: red;
-	}
-	.experience-description ul {
-		color: red;
-	}
-
-	/* Style for list items */
-	ul li {
-		font-family: Arial, sans-serif; /* Font style */
-		font-size: 16px; /* Font size */
-		color: #333; /* Text color */
-		margin: 10px 0; /* Margin between list items */
-		padding: 5px; /* Padding inside list items */
-		transition: background-color 0.3s; /* Transition for hover effect */
-	}
-
-	/* Hover effect for list items */
-	ul li:hover {
-		background-color: #e0e0e0; /* Change background color on hover */
-		cursor: pointer; /* Change cursor to pointer */
+	.experience-description :global(ul) {
+		padding-left: 20px;
+		list-style: disc;
+		padding-left: 20px;
+		:global(li) {
+			padding: 5px 0;
+		}
 	}
 </style>
