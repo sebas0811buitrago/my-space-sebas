@@ -1,12 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strictest",
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "exclude": ["public"]
+	"extends": "astro/tsconfigs/strictest",
+	"compilerOptions": {
+		"verbatimModuleSyntax": true,
+		"target": "ESNext",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"exclude": ["public"]
 }

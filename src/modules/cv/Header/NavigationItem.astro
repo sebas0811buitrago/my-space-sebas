@@ -1,0 +1,26 @@
+---
+import { cn } from "@/shared/utils/cn"
+import type { HTMLAttributes } from "astro/types"
+
+type Props = HTMLAttributes<"a"> & {
+	isHomeLink?: boolean
+}
+
+const { class: className, id, isHomeLink, ...props } = Astro.props
+---
+
+<a
+	class={cn(
+		"group flex items-center gap-2 text-neutral-secondary hover:font-bold hover:text-primary text-sm p-3 navigation-item",
+		className
+	)}
+	{...props}
+	data-is-home-link={isHomeLink}
+>
+	<hr class="w-6 transition-[width] duration-500 group-hover:w-14" />
+	<slot />
+</a>
+
+<script>
+	import "./NavigationItem"
+</script>

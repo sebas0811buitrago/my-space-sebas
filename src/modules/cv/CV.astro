@@ -1,13 +1,9 @@
 ---
-import Github from "@/shared/components/Icons/Github.astro"
-import Linkedin from "@/shared/components/Icons/Linkedin.astro"
 import Layout from "@/shared/components/layout/Layout.astro"
-import CvImage from "@/shared/images/sebastian-thumbnail.jpeg"
-import Image from "astro/components/Image.astro"
 import { getCollection } from "astro:content"
 import ExperienceCard from "./ExperienceCard"
 import CardsWrapper from "./ExperienceCard/CardsWrapper.astro"
-import NavigationItem from "./NavigationItem.astro"
+import { Header } from "./Header"
 
 const experienceContent = await getCollection("experience")
 ---
@@ -23,64 +19,10 @@ const experienceContent = await getCollection("experience")
 		class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
 	>
 		<div class="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-20">
-			<header
-				class="flex flex-col gap-8 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:flex-1 lg:flex-col lg:justify-between lg:py-24"
-			>
-				<div class="flex flex-col items-center gap-8 lg:items-start">
-					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-						<a href="/">Sebastian Buitrago</a>
-					</h1>
-					<div class="flex items-center gap-5">
-						<Image
-							src={CvImage}
-							alt="Picture ofSebastian Buitrago"
-							width={200}
-							height={200}
-							class={"rounded-full w-20 h-20 object-cover opacity-80"}
-							loading={"eager"}
-						/>
-						<h2 class="text-balance text-2xl tracking-tight">Senior Frontend Developer</h2>
-					</div>
-					<p class="text-balance text-center text-neutral-secondary lg:text-start">
-						I'm a Senior Frontend Developer with a passion for building user-friendly and accessible
-						websites. I'm excited to bring my expertise to the table and Lorem ipsum dolor sit amet
-						consectetur adipisicing elit. Exercitationem magni a voluptas, consequatur ullam nisi
-						earum perferendis fugit in debitis labore ea fugiat illo vero inventore quam iure esse
-						blanditiis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, quibusdam!
-					</p>
-				</div>
-				<nav class="hidden lg:block">
-					<ul class="flex-col gap-4">
-						<li><NavigationItem href={"/#about"} isHomeLink> ABOUT</NavigationItem></li>
-						<li><NavigationItem href={"/#experience"}> EXPERIENCE</NavigationItem></li>
-						<li><NavigationItem href={"/#education"}> EDUCATION</NavigationItem></li>
-					</ul>
-				</nav>
-
-				<nav>
-					<ul class="my-auto flex justify-center gap-4 pl-2 lg:justify-start">
-						<li>
-							<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
-								<Github
-									class="transitions-colors back text-accent group-hover:text-primary"
-									color="accent"
-								/>
-							</a>
-						</li>
-						<li>
-							<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
-								<Linkedin
-									class="text-accent transition-colors duration-500 group-hover:text-primary"
-									color="accent"
-								/>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</header>
+			<Header />
 			<main class="flex flex-col gap-10 lg:flex-1 lg:py-24" id="about">
 				<!-- <CardsWrapper title="About Me"> -->
-				<p class="text-neutral-secondary">
+				<p data-cv-info="about" class="text-neutral-secondary">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quod inventore ex harum
 					tenetur similique ab temporibus ratione commodi facilis tempore eius eveniet provident,
 					ullam, veritatis minus recusandae. Quibusdam, corporis? Minus corporis sequi possimus,
@@ -95,7 +37,7 @@ const experienceContent = await getCollection("experience")
 				</p>
 				<!-- </CardsWrapper> -->
 
-				<CardsWrapper title="Experience" class="mt-7" id="experience">
+				<CardsWrapper data-cv-info="experience" title="Experience" class="mt-7" id="experience">
 					{
 						experienceContent.map(async ({ data: experience, render }) => {
 							const { Content } = await render()
@@ -110,7 +52,7 @@ const experienceContent = await getCollection("experience")
 					}
 				</CardsWrapper>
 
-				<CardsWrapper title="Education" class="mt-7" id="education">
+				<CardsWrapper data-cv-info="education" title="Education" class="mt-7" id="education">
 					{
 						experienceContent.map(async ({ data: experience, render }) => {
 							const { Content } = await render()
@@ -130,10 +72,6 @@ const experienceContent = await getCollection("experience")
 </Layout>
 
 <script>
-	const root = document.getElementById("root")!
-	const cvBackground = document.getElementById("cv-background")!
-	root.addEventListener("mousemove", (event) => {
-		const { clientX: x, clientY: y } = event
-		cvBackground.style.background = `radial-gradient(400px at ${x}px ${y}px, hsla(39, 66%, 70%, 0.08), transparent 80%)`
-	})
+	import "./inteceptorEffect"
+	import "./mouseColorEffect"
 </script>

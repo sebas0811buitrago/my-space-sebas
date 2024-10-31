@@ -1,0 +1,63 @@
+---
+import Github from "@/shared/components/Icons/Github.astro"
+import Linkedin from "@/shared/components/Icons/Linkedin.astro"
+import CvImage from "@/shared/images/sebastian-thumbnail.jpeg"
+import Image from "astro/components/Image.astro"
+import NavigationItem from "./NavigationItem.astro"
+---
+
+<header
+	class="flex flex-col gap-8 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:flex-1 lg:flex-col lg:justify-between lg:py-24"
+>
+	<div class="flex flex-col items-center gap-8 lg:items-start">
+		<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+			<a href="/">Sebastian Buitrago</a>
+		</h1>
+		<div class="flex items-center gap-5">
+			<Image
+				src={CvImage}
+				alt="Picture ofSebastian Buitrago"
+				width={200}
+				height={200}
+				class={"rounded-full w-20 h-20 object-cover opacity-80"}
+				loading={"eager"}
+			/>
+			<h2 class="text-balance text-2xl tracking-tight">Senior Frontend Developer</h2>
+		</div>
+		<p class="text-balance text-center text-neutral-secondary lg:text-start">
+			I'm a Senior Frontend Developer with a passion for building user-friendly and accessible
+			websites. I'm excited to bring my expertise to the table and Lorem ipsum dolor sit amet
+			consectetur adipisicing elit. Exercitationem magni a voluptas, consequatur ullam nisi earum
+			perferendis fugit in debitis labore ea fugiat illo vero inventore quam iure esse blanditiis.
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, quibusdam!
+		</p>
+	</div>
+	<nav class="hidden lg:block">
+		<ul class="flex-col gap-4">
+			<li><NavigationItem href={"/#about"} isHomeLink> ABOUT</NavigationItem></li>
+			<li><NavigationItem href={"/#experience"}> EXPERIENCE</NavigationItem></li>
+			<li><NavigationItem href={"/#education"}> EDUCATION</NavigationItem></li>
+		</ul>
+	</nav>
+
+	<nav>
+		<ul class="my-auto flex justify-center gap-4 pl-2 lg:justify-start">
+			<li>
+				<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
+					<Github
+						class="transitions-colors back text-accent group-hover:text-primary"
+						color="accent"
+					/>
+				</a>
+			</li>
+			<li>
+				<a href="/" class="group block rounded-lg bg-accent/5 p-1" aria-label="Github Link">
+					<Linkedin
+						class="text-accent transition-colors duration-500 group-hover:text-primary"
+						color="accent"
+					/>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>
